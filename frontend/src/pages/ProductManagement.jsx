@@ -1,6 +1,6 @@
 // src/pages/ProductManagement.jsx
 import React, { useState } from 'react';
-import { Title, Text, Divider, Stack, Box } from '@mantine/core';
+import { Box, Stack, Title, Text, Divider, Grid, Center } from '@mantine/core';
 import ProductForm from '../components/ProductForm';
 import ProductList from '../components/ProductList';
 
@@ -14,33 +14,37 @@ const ProductManagement = () => {
     };
 
     return (
-        <Box maw={800} mx="auto" px="md" py="xl">
+        <Box maw={1200} mx="auto" px="md" py="xl">
             <Stack spacing="xl">
-                {/* Page Title */}
-                <div>
-                    <Title order={2}>Product Management</Title>
-                    <Text color="dimmed" size="sm">
-                        Manage your products by creating, updating, or viewing them.
-                    </Text>
-                </div>
+                {/* Centered Page Title */}
+                <Center>
+                    <div>
+                        <Title order={2} align="center">Product Management</Title>
+                        <Text c="dimmed" size="sm" align="center">
+                            Manage your products by creating, updating, or viewing them.
+                        </Text>
+                    </div>
+                </Center>
 
-                {/* Product Form */}
-                <div>
-                    <Title order={3}>Create or Edit Product</Title>
-                    <ProductForm product={productToEdit} onSubmit={handleSubmit} onCancel={() => setProductToEdit(null)} />
-                </div>
+                {/* Form and List in Grid */}
+                <Grid gutter="xl" align="flex-start">
+                    <Grid.Col span={{ base: 12, md: 6 }}>
+                        <Title order={3} mb="sm">Create or Edit Product</Title>
+                        <ProductForm
+                            product={productToEdit}
+                            onSubmit={handleSubmit}
+                            onCancel={() => setProductToEdit(null)}
+                        />
+                    </Grid.Col>
 
-                {/* Divider between sections */}
-                <Divider label="Product List" labelPosition="center" my="md" />
-
-                {/* Product List */}
-                <div>
-                    <Title order={3}>Product List</Title>
-                    <Text size="sm">
-                        Here are all your existing products.
-                    </Text>
-                    <ProductList onEdit={setProductToEdit} refreshTrigger={refresh} />
-                </div>
+                    <Grid.Col span={{ base: 12, md: 6 }}>
+                        <Title order={3} mb="sm">Product List</Title>
+                        <Text size="sm" mb="md">
+                            Here are all your existing products.
+                        </Text>
+                        <ProductList onEdit={setProductToEdit} refreshTrigger={refresh} />
+                    </Grid.Col>
+                </Grid>
             </Stack>
         </Box>
     );

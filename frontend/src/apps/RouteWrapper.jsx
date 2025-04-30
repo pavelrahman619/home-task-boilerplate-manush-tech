@@ -23,9 +23,7 @@ const RouteWrapper = () => {
                   path={path}
                   element={
                     <ProtectedPage>
-                      <Container>
                         <Element />
-                      </Container>
                     </ProtectedPage>
                   }
                 />

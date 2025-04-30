@@ -1,17 +1,24 @@
 import {
-  Button,
   Container,
   Paper,
-  PasswordInput,
-  Stack,
-  TextInput,
   Title,
-} from "@mantine/core";
+  Text,
+  TextInput,
+  PasswordInput,
+  Button,
+  Stack,
+  Box,
+  Center,
+} from '@mantine/core';
 import { useForm } from "@mantine/form";
 import { useDispatch } from "react-redux";
 import { authActions } from './../../store/reducers/authReducer';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { motion } from 'framer-motion';
+
+const MotionBox = motion(Box);
+
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -50,28 +57,54 @@ const SignIn = () => {
   };
 
   return (
-    <Container size={420} my={40}>
-      <Title align="center">Welcome Back</Title>
-      <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-        <form onSubmit={form.onSubmit(handleSubmit)}>
-          <Stack>
-            <TextInput
-              label="Identifier"
-              placeholder="you@manush.com"
-              {...form.getInputProps("identifier")}
-            />
-            <PasswordInput
-              label="Password"
-              placeholder="Your password"
-              {...form.getInputProps("password")}
-            />
-          </Stack>
-          <Button fullWidth mt="xl" type="submit">
-            Sign In
-          </Button>
-        </form>
-      </Paper>
+    <Box
+    style={{
+      background:
+        'linear-gradient(135deg, #74ebd5 0%, #acb6e5 100%)',
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+    }}
+  >
+    <Container size={420}>
+      <MotionBox
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <Center>
+          <Title align="center" order={2} fw={700} c="white">
+            Welcome Back 👋
+          </Title>
+        </Center>
+        <Text c="white" size="sm" align="center" mt="xs">
+          Enter your credentials to access the dashboard.
+        </Text>
+
+        <Paper withBorder shadow="md" p={30} mt={30} radius="md" bg="white">
+          <form onSubmit={form.onSubmit(handleSubmit)}>
+            <Stack>
+              <TextInput
+                label="Email or Username"
+                placeholder="you@manush.com"
+                {...form.getInputProps('identifier')}
+                radius="md"
+              />
+              <PasswordInput
+                label="Password"
+                placeholder="Your password"
+                {...form.getInputProps('password')}
+                radius="md"
+              />
+            </Stack>
+            <Button fullWidth mt="xl" type="submit" radius="md">
+              Sign In
+            </Button>
+          </form>
+        </Paper>
+      </MotionBox>
     </Container>
+  </Box>
   );
 };
 

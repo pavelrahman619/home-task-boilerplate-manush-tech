@@ -1,6 +1,7 @@
 import { SIGNIN } from "../../constants/AppUrls";
 import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
+import Layout from "./Layout";
 
 const ProtectedPage = ({ children }) => {
   const location = useLocation();
@@ -10,7 +11,7 @@ const ProtectedPage = ({ children }) => {
   if (!isAuth) {
     return <Navigate to={SIGNIN} state={{ from: location.pathname }} />;
   } else {
-    return children;
+    return <Layout>{children}</Layout>;
   }
 };
 
