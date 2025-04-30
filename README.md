@@ -52,3 +52,58 @@ Content-Type:application/json
   "identifier": "abir@manush.tech",
   "password": "123456"
 }
+
+
+
+Structure for backend
+
+backend/
+├── src/
+│   ├── app.module.ts
+│   ├── product/
+│   │   ├── dto/
+│   │   │   └── create-product.dto.ts
+│   │   ├── entities/
+│   │   │   └── product.entity.ts
+│   │   ├── product.controller.ts
+│   │   ├── product.service.ts
+│   │   └── product.module.ts
+│   └── prisma/
+│       └── prisma.service.ts
+├── prisma/
+│   └── schema.prisma
+└── main.ts
+
+
+Structure for frontend
+
+frontend/
+├── src/
+│   ├── components/
+│   │   ├── ProductList.jsx
+│   │   └── ProductForm.jsx
+│   ├── pages/
+│   │   └── ProductManagement.jsx
+│   ├── services/
+│   │   └── productService.js
+│   ├── App.jsx
+│   └── main.jsx
+
+
+Testing products in Postman
+
+POST http://localhost:3000/products
+
+Body(JSON)
+
+{
+  "name": "Sample Product",
+  "description": "This is a test product.",
+  "price": 99.99,
+  "weight": 1.5
+}
+
+Get all products
+
+GET http://localhost:4000/products
+

@@ -5,11 +5,17 @@ import { PrismaService } from 'src/modules/prisma/prisma.service';
 
 @Injectable()
 export class ProductService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   // List products
   async findAll() {
-    return this.prisma.product.findMany({ where: { enabled: true } });
+    return this.prisma.product.findMany(
+      {
+        orderBy: {
+          createdAt: 'asc',
+        },
+      }
+    );
   }
 
   // Create a product
@@ -38,6 +44,12 @@ export class ProductService {
     return this.prisma.product.update({
       where: { id },
       data: { enabled: true },
+    });
+  }
+
+  async findAllEnabled() {
+    return this.prisma.product.findMany({
+      where: { enabled: true },
     });
   }
 }

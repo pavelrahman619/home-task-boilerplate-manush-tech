@@ -5,7 +5,7 @@ import { CreateProductDto } from './dto/create-product.dto';
 
 @Controller('product')
 export class ProductController {
-  constructor(private readonly productService: ProductService) {}
+  constructor(private readonly productService: ProductService) { }
 
   // List products
   @Get()
@@ -21,19 +21,24 @@ export class ProductController {
 
   // Edit product
   @Put(':id')
-  update(@Param('id') id: number, @Body() createProductDto: CreateProductDto) {
-    return this.productService.update(id, createProductDto);
+  update(@Param('id') id: string, @Body() createProductDto: CreateProductDto) {
+    return this.productService.update(+id, createProductDto);
   }
 
   // Disable product
   @Put('disable/:id')
-  disable(@Param('id') id: number) {
-    return this.productService.disable(id);
+  disable(@Param('id') id: string) {
+    return this.productService.disable(+id);
   }
 
   // Enable product
   @Put('enable/:id')
-  enable(@Param('id') id: number) {
-    return this.productService.enable(id);
+  enable(@Param('id') id: string) {
+    return this.productService.enable(+id);
+  }
+
+  @Get('enabled')
+  findAllEnabled() {
+    return this.productService.findAllEnabled();
   }
 }
