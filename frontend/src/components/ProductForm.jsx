@@ -1,7 +1,8 @@
 // src/components/ProductForm.jsx
 import React, { useEffect, useState } from 'react';
 import { createProduct, updateProduct } from '../services/productService';
-import { Button, TextInput, Textarea } from '@mantine/core';
+import { TextInput, Textarea, Button, Stack, Group, Box } from '@mantine/core';
+
 
 const ProductForm = ({ product, onSubmit, onCancel }) => {
     const [name, setName] = useState('');
@@ -52,43 +53,44 @@ const ProductForm = ({ product, onSubmit, onCancel }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <TextInput
-                label="Name"
-                value={name}
-                onChange={(e) => setName(e.currentTarget.value)}
-                required
-            />
-            <Textarea
-                label="Description"
-                value={description}
-                onChange={(e) => setDescription(e.currentTarget.value)}
-                required
-            />
-            <TextInput
-                label="Price"
-                type="number"
-                value={price}
-                onChange={(e) => setPrice(e.currentTarget.value)}
-                required
-            />
-            <TextInput
-                label="Weight"
-                type="number"
-                value={weight}
-                onChange={(e) => setWeight(e.currentTarget.value)}
-                required
-            />
-            <Button type="submit">{product ? 'Update Product' : 'Create Product'}</Button>
-            <Button
-                variant="light"
-                color="gray"
-                type="button"
-                onClick={handleCancel}
-            >
-                Cancel
-            </Button>
-        </form>
+        <Box component="form" onSubmit={handleSubmit} maw={500} mx="auto">
+            <Stack spacing="md">
+                <TextInput
+                    label="Name"
+                    value={name}
+                    onChange={(e) => setName(e.currentTarget.value)}
+                    required
+                />
+                <Textarea
+                    label="Description"
+                    value={description}
+                    onChange={(e) => setDescription(e.currentTarget.value)}
+                    required
+                />
+                <TextInput
+                    label="Price"
+                    type="number"
+                    value={price}
+                    onChange={(e) => setPrice(e.currentTarget.value)}
+                    required
+                />
+                <TextInput
+                    label="Weight"
+                    type="number"
+                    value={weight}
+                    onChange={(e) => setWeight(e.currentTarget.value)}
+                    required
+                />
+                <Group position="right" mt="sm">
+                    <Button variant="light" color="gray" type="button" onClick={handleCancel}>
+                        Cancel
+                    </Button>
+                    <Button type="submit">
+                        {product ? 'Update Product' : 'Create Product'}
+                    </Button>
+                </Group>
+            </Stack>
+        </Box>
     );
 };
 
