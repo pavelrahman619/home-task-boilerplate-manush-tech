@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import appRoutes from "../constants/AppRoutes";
 import ProtectedPage from "../components/Layouts/ProtectedPage";
 import NoPageFound from "../components/Global/NoPageFound";
+import { Container } from '@mantine/core';
 
 const RouteWrapper = () => {
   return (
@@ -22,7 +23,9 @@ const RouteWrapper = () => {
                   path={path}
                   element={
                     <ProtectedPage>
-                      <Element />
+                      <Container>
+                        <Element />
+                      </Container>
                     </ProtectedPage>
                   }
                 />
