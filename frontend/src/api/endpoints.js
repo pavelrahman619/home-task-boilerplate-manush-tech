@@ -13,4 +13,15 @@ export const API = {
     ENABLE: (id) => `${BASE_URL}/api/v1/product/enable/${id}`,   // PUT
     LIST_ENABLED: `${BASE_URL}/api/v1/product/enabled`, // GET
   },
+  PROMOTION: {
+    LIST_ALL: `${BASE_URL}/api/v1/promotion`, // GET
+    CREATE: `${BASE_URL}/api/v1/promotion`,   // POST
+    UPDATE: (id) => `${BASE_URL}/api/v1/promotion/${id}`, // PUT
+    ENABLE: (id) => `${BASE_URL}/api/v1/promotion/enable/${id}`, // PUT
+    DISABLE: (id) => `${BASE_URL}/api/v1/promotion/disable/${id}`, // PUT
+  },
+  PROMOTION_SLAB: {
+    CREATE: `${BASE_URL}/api/v1/promotion-slab`, // POST
+    GET_BY_PROMOTION_ID: (promotionId) => `${BASE_URL}/api/v1/promotion-slab/${promotionId}`, // GET
+  },
 };

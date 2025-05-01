@@ -3,6 +3,9 @@ import ReduxWrapper from "./ReduxWrapper";
 import RouteWrapper from "./RouteWrapper";
 import ThemeWrapper from "./ThemeWrapper";
 
+import '@mantine/core/styles.css';
+import '@mantine/dates/styles.css';
+
 function App() {
   return (
     <div>

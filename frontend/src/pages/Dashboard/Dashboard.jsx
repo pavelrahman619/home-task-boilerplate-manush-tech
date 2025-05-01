@@ -1,7 +1,9 @@
 import React from "react";
 import LogoutButton from "../../components/Global/LogoutButton";
 import { Link } from "react-router-dom";
-import { PRODUCT_MANAGEMENT } from "../../constants/AppUrls";
+import { ROUTES } from "../../constants/AppUrls";
+
+
 import {
   Container,
   Card,
@@ -25,8 +27,11 @@ const Dashboard = () => {
         </Text>
 
         <Group position="center" mt="md">
-          <Button component={Link} to={PRODUCT_MANAGEMENT} variant="light" color="blue">
+          <Button component={Link} to={ROUTES.PRODUCT_MANAGEMENT} variant="light" color="blue">
             Go to Product Management
+          </Button>
+          <Button component={Link} to={ROUTES.PROMOTION_MANAGEMENT} variant="light" color="blue">
+            Go to Promotion Management
           </Button>
         </Group>
       </Card>
