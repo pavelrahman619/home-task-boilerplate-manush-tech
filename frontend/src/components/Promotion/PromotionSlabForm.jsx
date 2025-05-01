@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, TextInput, NumberInput, Group, Divider } from '@mantine/core';
+import { Button, TextInput, NumberInput, Group } from '@mantine/core';
 import axios from 'axios';
 import { API } from './../../api/endpoints';
 
@@ -7,14 +7,24 @@ const PromotionSlabForm = ({ promotionId, onSlabSubmit }) => {
   const [slabData, setSlabData] = useState({
     minWeight: 0,
     maxWeight: 0,
-    discountPerUnit: 0,
+    discount: 0,
   });
 
   const handleSubmit = async () => {
+    const { minWeight, maxWeight, discount } = slabData;
+
+    // Validate that discount is a number
+    if (discount === null || isNaN(discount)) {
+      alert('Please enter a valid number for Discount Per Unit.');
+      return;
+    }
+
     try {
       await axios.post(API.PROMOTION_SLAB.CREATE, {
         promotionId,
-        ...slabData,
+        minWeight: parseFloat(minWeight),
+        maxWeight: parseFloat(maxWeight),
+        discount: parseFloat(discount),
       });
       onSlabSubmit();
     } catch (error) {
@@ -24,24 +34,31 @@ const PromotionSlabForm = ({ promotionId, onSlabSubmit }) => {
 
   return (
     <div>
-      <TextInput
+      <NumberInput
         label="Minimum Weight"
-        type="number"
+        min={0}
+        precision={2}
         value={slabData.minWeight}
-        onChange={(e) => setSlabData({ ...slabData, minWeight: +e.target.value })}
+        onChange={(value) => setSlabData({ ...slabData, minWeight: value ?? 0 })}
         required
       />
-      <TextInput
+
+      <NumberInput
         label="Maximum Weight"
-        type="number"
+        min={0}
+        precision={2}
         value={slabData.maxWeight}
-        onChange={(e) => setSlabData({ ...slabData, maxWeight: +e.target.value })}
+        onChange={(value) => setSlabData({ ...slabData, maxWeight: value ?? 0 })}
         required
       />
       <NumberInput
         label="Discount Per Unit"
-        value={slabData.discountPerUnit}
-        onChange={(value) => setSlabData({ ...slabData, discountPerUnit: value })}
+        min={0}
+        precision={2}
+        value={slabData.discount}
+        onChange={(value) =>
+          setSlabData({ ...slabData, discount: value ?? 0 })
+        }
         required
       />
       <Group position="right" mt="md">
