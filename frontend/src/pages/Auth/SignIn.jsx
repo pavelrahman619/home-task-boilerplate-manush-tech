@@ -16,6 +16,7 @@ import { authActions } from './../../store/reducers/authReducer';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { motion } from 'framer-motion';
+import { API } from '../../api/endpoints';
 
 const MotionBox = motion(Box);
 
@@ -39,7 +40,7 @@ const SignIn = () => {
 
   const handleSubmit = async (values) => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/v1/auth/login`, values); // adjust if needed
+      const response = await axios.post(API.AUTH.LOGIN, values); // adjust if needed
       if (response.data?.status === 200) {
         dispatch(
           authActions.signin({

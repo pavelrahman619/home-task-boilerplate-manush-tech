@@ -1,29 +1,27 @@
-// src/services/productService.js
 import axios from 'axios';
-
-const API_URL = `${import.meta.env.VITE_API_BASE_URL}/api/v1/product`;
+import { API } from '../api/endpoints';  // Importing from endpoints.js
 
 export const getProducts = async () => {
-  const response = await axios.get(API_URL);
+  const response = await axios.get(API.PRODUCT.LIST_ALL);
   return response.data;
 };
 
 export const createProduct = async (product) => {
-  const response = await axios.post(API_URL, product);
+  const response = await axios.post(API.PRODUCT.CREATE, product);
   return response.data;
 };
 
 export const updateProduct = async (id, product) => {
-  const response = await axios.put(`${API_URL}/${id}`, product);
+  const response = await axios.put(API.PRODUCT.UPDATE(id), product);
   return response.data;
 };
 
 export const disableProduct = async (id) => {
-  const response = await axios.put(`${API_URL}/disable/${id}`);
+  const response = await axios.put(API.PRODUCT.DISABLE(id));
   return response.data;
 };
 
 export const enableProduct = async (id) => {
-  const response = await axios.put(`${API_URL}/enable/${id}`);
+  const response = await axios.put(API.PRODUCT.ENABLE(id));
   return response.data;
 };

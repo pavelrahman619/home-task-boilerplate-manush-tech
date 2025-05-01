@@ -1,3 +1,9 @@
+Things to install:
+Laragon (for terminal only)
+NVM (for node or use Laragon instead)
+Docker
+Postgresql
+
 Things to run:
 Frontend
 Backend
