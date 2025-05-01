@@ -3,6 +3,7 @@ Laragon (for terminal only)
 NVM (for node or use Laragon instead)
 Docker
 Postgresql
+Postman (for api test)
 
 Things to run:
 Frontend
@@ -98,7 +99,7 @@ frontend/
 
 Testing products in Postman
 
-POST http://localhost:3000/products
+POST http://localhost:4000/api/v1/promotion
 
 Body(JSON)
 

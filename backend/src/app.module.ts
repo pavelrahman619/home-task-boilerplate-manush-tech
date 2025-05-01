@@ -4,6 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from './modules/prisma/prisma.module';
 import { SharedModule } from './modules/shared.module';
 import { ProductModule } from './apps/product/product.module';
+import { PromotionModule } from './apps/promotion/promotion.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { ProductModule } from './apps/product/product.module';
     PrismaModule,
     SharedModule,
     ProductModule,
+    PromotionModule
   ],
   providers: [AuthModule, PrismaModule],
 })
