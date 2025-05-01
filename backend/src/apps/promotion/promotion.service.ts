@@ -10,7 +10,9 @@ export class PromotionService {
 
   async findAll() {
     return this.prisma.promotion.findMany({
-      where: { enabled: true },
+      orderBy: {
+        createdAt: 'asc',
+      },
       include: {
         promotionSlabs: true,
       },

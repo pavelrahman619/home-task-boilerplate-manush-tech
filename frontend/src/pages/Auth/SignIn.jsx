@@ -18,7 +18,7 @@ import axios from "axios";
 import { motion } from 'framer-motion';
 import { API } from '../../api/endpoints';
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 
 const SignIn = () => {

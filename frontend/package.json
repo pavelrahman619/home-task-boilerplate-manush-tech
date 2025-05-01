@@ -10,11 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@mantine/core": "^7.15.2",
+    "@mantine/core": "^7.17.5",
+    "@mantine/dates": "^7.17.5",
     "@mantine/form": "^7.15.2",
-    "@mantine/hooks": "^7.15.2",
-    "@mantine/modals": "^7.15.2",
-    "@mantine/notifications": "^7.15.2",
+    "@mantine/hooks": "^7.17.5",
+    "@mantine/modals": "^7.17.5",
+    "@mantine/notifications": "^7.17.5",
     "@reduxjs/toolkit": "^2.5.0",
     "@tabler/icons-react": "^3.9.0",
     "@tanstack/react-query": "^4.26.1",
@@ -40,7 +41,7 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^15.14.0",
-    "postcss": "^8.4.49",
+    "postcss": "^8.5.3",
     "postcss-preset-mantine": "^1.17.0",
     "postcss-simple-vars": "^7.0.1",
     "vite": "^6.0.5"

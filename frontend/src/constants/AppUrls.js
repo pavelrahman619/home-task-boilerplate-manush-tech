@@ -10,4 +10,5 @@ export const ROUTES = {
     SIGNIN: '/',
     DASHBOARD: '/dashboard',
     PRODUCT_MANAGEMENT: '/product-management',
+    PROMOTION_MANAGEMENT: '/promotion-management',
   };

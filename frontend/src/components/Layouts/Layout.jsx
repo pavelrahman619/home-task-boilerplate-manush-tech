@@ -17,6 +17,9 @@ const Layout = ({ children }) => {
                         <li>
                             <Link to={ROUTES.PRODUCT_MANAGEMENT} style={{ color: 'white', textDecoration: 'none' }}>Products</Link>
                         </li>
+                        <li>
+                            <Link to={ROUTES.PROMOTION_MANAGEMENT} style={{ color: 'white', textDecoration: 'none' }}>Promotions</Link>
+                        </li>
                         {/* Add more links as needed */}
                     </ul>
                 </nav>
