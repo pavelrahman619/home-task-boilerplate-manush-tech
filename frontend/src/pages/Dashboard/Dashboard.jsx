@@ -1,5 +1,4 @@
 import React from "react";
-import LogoutButton from "../../components/Global/LogoutButton";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../constants/AppUrls";
 
@@ -12,6 +11,7 @@ import {
   Button,
   Group,
   Flex,
+  Stack,
 } from "@mantine/core";
 
 const Dashboard = () => {
@@ -26,14 +26,17 @@ const Dashboard = () => {
           Welcome to your dashboard! Here you can manage your products and settings.
         </Text>
 
-        <Group position="center" mt="md">
+        <Stack position="center" mt="md">
           <Button component={Link} to={ROUTES.PRODUCT_MANAGEMENT} variant="light" color="blue">
             Go to Product Management
           </Button>
           <Button component={Link} to={ROUTES.PROMOTION_MANAGEMENT} variant="light" color="blue">
             Go to Promotion Management
           </Button>
-        </Group>
+          <Button component={Link} to={ROUTES.ORDER_LIST} variant="light" color="blue">
+            Go to Order Management
+          </Button>
+        </Stack>
       </Card>
     </Container>
   )

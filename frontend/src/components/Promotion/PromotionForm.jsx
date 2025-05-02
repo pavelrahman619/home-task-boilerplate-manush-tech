@@ -106,6 +106,7 @@ const PromotionForm = ({ promotion, onSubmit }) => {
                     setFormData({ ...formData, discountPercentage: value ?? 0 })
                 }
                 required
+                disabled={formData.type === 'WEIGHTED'}
             />
             <Group position="right" mt="md">
                 <Button variant="light" color="gray" type="button" onClick={handleCancel}>

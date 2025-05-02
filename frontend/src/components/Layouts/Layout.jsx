@@ -1,4 +1,4 @@
-import { Container, Flex, Grid, Text } from '@mantine/core';
+import { Container, Flex, Grid, Text, Stack, NavLink } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../constants/AppUrls';
 import LogoutButton from '../Global/LogoutButton';
@@ -7,22 +7,15 @@ const Layout = ({ children }) => {
     return (
         <div style={{ display: 'flex', minHeight: '100vh' }}>
             {/* Sidebar */}
-            <div style={{ width: '250px', background: '#1A1B1E', padding: '20px' }}>
-                <Text c="white" size="lg" weight={500}>Dashboard</Text>
-                <nav>
-                    <ul style={{ listStyle: 'none', padding: 0 }}>
-                        <li>
-                            <Link to={ROUTES.DASHBOARD} style={{ color: 'white', textDecoration: 'none' }}>Home</Link>
-                        </li>
-                        <li>
-                            <Link to={ROUTES.PRODUCT_MANAGEMENT} style={{ color: 'white', textDecoration: 'none' }}>Products</Link>
-                        </li>
-                        <li>
-                            <Link to={ROUTES.PROMOTION_MANAGEMENT} style={{ color: 'white', textDecoration: 'none' }}>Promotions</Link>
-                        </li>
-                        {/* Add more links as needed */}
-                    </ul>
-                </nav>
+            <div style={{ width: 250, background: '#1A1B1E', padding: 20 }}>
+                <Text c="white" size="lg" fw={500} mb="md">Dashboard</Text>
+                <Stack spacing="md">
+                    <NavLink color="blue.4" variant="subtle" active label="Home" component={Link} to={ROUTES.DASHBOARD} />
+                    <NavLink color="blue.4" variant="subtle" active label="Products" component={Link} to={ROUTES.PRODUCT_MANAGEMENT} />
+                    <NavLink color="blue.4" variant="subtle" active label="Promotions" component={Link} to={ROUTES.PROMOTION_MANAGEMENT} />
+                    <NavLink color="blue.4" variant="subtle" active label="Orders List" component={Link} to={ROUTES.ORDER_LIST} />
+                    <NavLink color="blue.4" variant="subtle" active label="Orders Create" component={Link} to={ROUTES.ORDER_CREATE} />
+                </Stack>
             </div>
 
             {/* Main Content Area */}
