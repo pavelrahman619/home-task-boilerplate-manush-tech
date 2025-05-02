@@ -5,6 +5,7 @@ import { PrismaModule } from './modules/prisma/prisma.module';
 import { SharedModule } from './modules/shared.module';
 import { ProductModule } from './apps/product/product.module';
 import { PromotionModule } from './apps/promotion/promotion.module';
+import { OrderModule } from './apps/order/order.module';
 
 @Module({
   imports: [
@@ -13,7 +14,8 @@ import { PromotionModule } from './apps/promotion/promotion.module';
     PrismaModule,
     SharedModule,
     ProductModule,
-    PromotionModule
+    PromotionModule,
+    OrderModule
   ],
   providers: [AuthModule, PrismaModule],
 })

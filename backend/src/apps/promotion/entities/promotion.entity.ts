@@ -8,6 +8,7 @@ export class PromotionEntity implements Promotion {
   startDate: Date;
   endDate: Date;
   enabled: boolean;
+  discountPercentage: number;
   type: PromotionType; // You can keep this as string, or use a more specific enum type
 
   createdAt: Date;

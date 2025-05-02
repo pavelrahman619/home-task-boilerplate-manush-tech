@@ -24,4 +24,8 @@ export const API = {
     CREATE: `${BASE_URL}/api/v1/promotion-slab`, // POST
     GET_BY_PROMOTION_ID: (promotionId) => `${BASE_URL}/api/v1/promotion-slab/${promotionId}`, // GET
   },
+  ORDER: {
+    LIST_ALL: `${BASE_URL}/api/v1/order`, // GET
+    CREATE: `${BASE_URL}/api/v1/order`,   // POST
+  }
 };

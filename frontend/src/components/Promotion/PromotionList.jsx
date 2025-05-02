@@ -44,6 +44,7 @@ const PromotionList = ({ onEdit, refreshTrigger }) => {
                         <th>Title</th>
                         <th>Start Date</th>
                         <th>End Date</th>
+                        <th>Discount</th>
                         <th>Type</th>
                         <th>Status</th>
                         <th>Actions</th>
@@ -55,6 +56,7 @@ const PromotionList = ({ onEdit, refreshTrigger }) => {
                             <td>{promotion.title}</td>
                             <td>{new Date(promotion.startDate).toLocaleDateString()}</td>
                             <td>{new Date(promotion.endDate).toLocaleDateString()}</td>
+                            <td>{promotion.discountPercentage}</td>
                             <td>{promotion.type}</td>
                             <td>
                                 <Switch
