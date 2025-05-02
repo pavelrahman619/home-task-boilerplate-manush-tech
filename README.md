@@ -1,3 +1,7 @@
+Branches:
+staging
+feat-docker (dockerized application) 
+
 Things to install:
 Laragon (for terminal only)
 NVM (for node or use Laragon instead). Node v22.15.0 is used

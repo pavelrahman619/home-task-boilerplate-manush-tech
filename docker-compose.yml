@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mydb
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+  redis:
+    image: redis
+    container_name: redis
+    command: redis-server --save 20 1 --loglevel warning --requirepass nestjs_starter_demo
+    ports:
+      - '6379:6379'
+
+  backend:
+    build:
+      context: ./backend
+    container_name: backend
+    ports:
+      - '5001:5000'
+    depends_on:
+      - db
+      - redis
+    env_file:
+      - ./backend/configs/.env.docker
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/mydb
+      REDIS_URL: redis://default:nestjs_starter_demo@redis:6379
+    volumes:
+      - ./backend:/app
+    command: /bin/bash -c "npm run build && npm run prisma:generate && npm run migrate:dev && npm run seed:run && npm run start:prod"
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_BASE_URL: http://localhost:5000
+    container_name: frontend
+    ports:
+      - '3000:80'
+    depends_on:
+      - backend
+    environment:
+      - VITE_API_BASE_URL=http://localhost:5000
+
+volumes:
+  pgdata:

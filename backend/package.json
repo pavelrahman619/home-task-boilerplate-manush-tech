@@ -11,7 +11,7 @@
     "stage": "dotenv -e ./configs/.env.staging -- nest start",
     "dev": "dotenv -e ./configs/.env.development -- nest start --watch",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "dotenv -e ./configs/.env.production -- node dist/main",
+    "start:prod": "dotenv -e ./configs/.env.docker -- node dist/src/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "module:generate": "npx @nestjs/cli g module",
     "service:generate": "npx @nestjs/cli g service",
