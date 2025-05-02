@@ -1,71 +1,121 @@
-Things to install:
-Laragon (for terminal only)
-NVM (for node or use Laragon instead). Node v22.15.0 is used
-Docker
-Postgresql
-Postman (for api test)
+# 🚀 Project Setup & Developer Guide
 
-Things to run:
-Frontend
-Backend
-Docker
-Database
+This documentation serves as the central guide for anyone working on this project.
 
-Running frontend:
-Need latest Node version
+---
 
+## 📦 Requirements: Things to Install
+
+Make sure the following tools are installed on your machine:
+
+- ✅ **Laragon** *(for terminal only)*
+- ✅ **NVM** *(for Node.js — or use Laragon instead)*
+  - Node.js version: `v22.15.0`
+- ✅ **Docker**
+- ✅ **PostgreSQL**
+- ✅ **Postman** *(for API testing)*
+
+---
+
+## 🔧 Things to Run
+
+You will need to run the following services to get the project up and running:
+
+- Frontend
+- Backend
+- Docker
+- PostgreSQL Database
+
+---
+
+## 🌐 Running the Frontend
+
+> ⚠️ Requires the latest version of Node.js
+
+```bash
 npm install
 npm run dev
+```
 
+---
 
-Running backend:
+## 🧠 Running the Backend
 
+```bash
 npm install
 npm run prisma:generate
 npm run migrate:dev
 npm run seed:run
 npm run dev
+```
 
+---
 
-Running Docker:
-run docker compose
+## 🐳 Running Docker
 
-Running database:
-setup and run postgresql in local
+```bash
+docker compose up
+```
 
+---
 
-For running everything in Docker:
-Go to 'feat-docker' branch
-docker-compose up --build
+## 🗃 Running the Database Locally
 
+> Set up and run PostgreSQL on your local machine manually if you're not using Docker.
 
-For Prisma Studio
+---
+
+## 📦 Run Everything in Docker
+
+1. Switch to the `feat-docker` branch:
+    ```bash
+    git checkout feat-docker
+    ```
+
+2. Start all services:
+    ```bash
+    docker-compose up --build
+    ```
+
+---
+
+## 🔍 Prisma Studio
+
+To visually explore your database using Prisma:
+
+```bash
 npx prisma studio
+```
 
+---
 
+## 📮 API Authentication (Postman)
 
-For running in postman
-// desktop app needed   
+> Desktop version of Postman is required.
 
-* POST 
+### Login Endpoint
 
-http://localhost:4000/api/v1/auth/login
+- **Method:** `POST`  
+- **URL:** `http://localhost:4000/api/v1/auth/login`  
+- **Headers:**
+  ```
+  Content-Type: application/json
+  ```
+- **Body (raw JSON):**
+  ```json
+  {
+    "identifier": "abir@manush.tech",
+    "password": "123456"
+  }
+  ```
 
-* Headers:
+---
 
-Content-Type:application/json
+## 🗂 Project Structure
 
-* Body(select raw)
+### Backend
 
-{
-  "identifier": "abir@manush.tech",
-  "password": "123456"
-}
-
-
-
-Structure for backend
-
+```
 backend/
 ├── src/
 │   ├── app.module.ts
@@ -82,10 +132,11 @@ backend/
 ├── prisma/
 │   └── schema.prisma
 └── main.ts
+```
 
+### Frontend
 
-Structure for frontend
-
+```
 frontend/
 ├── src/
 │   ├── components/
@@ -97,46 +148,62 @@ frontend/
 │   │   └── productService.js
 │   ├── App.jsx
 │   └── main.jsx
+```
 
+---
 
-Testing products in Postman
+## 🧪 Testing APIs in Postman
 
-POST http://localhost:4000/api/v1/promotion
+### 📦 Testing Products
 
-Body(JSON)
+**Create Product**
 
-{
-  "name": "Sample Product",
-  "description": "This is a test product.",
-  "price": 99.99,
-  "weight": 1.5
-}
+- **POST** `http://localhost:4000/api/v1/promotion`  
+- **Body (JSON):**
+  ```json
+  {
+    "name": "Sample Product",
+    "description": "This is a test product.",
+    "price": 99.99,
+    "weight": 1.5
+  }
+  ```
 
-Get all products
+**Get All Products**
 
-GET http://localhost:4000/products
+- **GET** `http://localhost:4000/products`
 
+---
 
-Testing orders in Postman
+### 📦 Testing Orders
 
-POST http://localhost:4000/api/v1/order
+**Create Order**
 
-Body(JSON)
-{
-  "customerName": "Alice",
-  "items": [
-    {
-      "productId": 1,
-      "quantity": 2
-    }
-  ]
-}
+- **POST** `http://localhost:4000/api/v1/order`  
+- **Body (JSON):**
+  ```json
+  {
+    "customerName": "Alice",
+    "items": [
+      {
+        "productId": 1,
+        "quantity": 2
+      }
+    ]
+  }
+  ```
 
+---
 
+## ⚠️ Known Issues
 
-Problems faced when running given boilerplate
-Prisma caused problems when trying to run with MySQL
-Postgresql couldnt authenticate properly in either docker or local computer
-Redis is directly related to both of them and wasn't able to work properly either
-Vite server Website is severely slow when reloading
-Vite server not working when VSCode is running
+- Prisma does **not** work well with MySQL in this boilerplate.
+- PostgreSQL authentication may fail both in Docker and local setups.
+- Redis has dependencies on both and fails if either PostgreSQL or Prisma fails.
+- Vite server:
+  - **Very slow** when reloading.
+  - **Fails to start** if VSCode is running.
+
+---
+
+Happy coding! 🧑‍💻
