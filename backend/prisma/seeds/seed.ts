@@ -60,6 +60,7 @@ async function main() {
         type: 'PERCENTAGE',
         startDate: new Date('2025-05-01'),
         endDate: new Date('2025-06-01'),
+        discountPercentage: 12.5,
         enabled: true,
       },
       {
@@ -67,6 +68,7 @@ async function main() {
         type: 'FIXED',
         startDate: new Date('2025-05-01'),
         endDate: new Date('2025-06-01'),
+        discountPercentage: 10.5,
         enabled: true,
       },
       {
@@ -74,6 +76,7 @@ async function main() {
         type: 'WEIGHTED',
         startDate: new Date('2025-05-01'),
         endDate: new Date('2025-06-01'),
+        discountPercentage: 7.5,
         enabled: true,
       },
     ],

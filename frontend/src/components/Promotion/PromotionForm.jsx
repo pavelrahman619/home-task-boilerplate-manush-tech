@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, TextInput, Select, Group, Divider, Title, Text } from '@mantine/core';
+import { Button, TextInput, Select, Group, Divider, Title, Text, NumberInput } from '@mantine/core';
 import { DatePickerInput } from '@mantine/dates';
 import axios from 'axios';
 import { API } from './../../api/endpoints';
@@ -10,6 +10,7 @@ const PromotionForm = ({ promotion, onSubmit }) => {
         title: '',
         startDate: null,
         endDate: null,
+        discountPercentage: 0,
         type: '',
         enabled: true,
     });
@@ -23,6 +24,7 @@ const PromotionForm = ({ promotion, onSubmit }) => {
                 title: promotion.title,
                 startDate: new Date(promotion.startDate),
                 endDate: new Date(promotion.endDate),
+                discountPercentage: promotion.discountPercentage,
                 type: promotion.type,
                 enabled: promotion.enabled,
             });
@@ -52,6 +54,7 @@ const PromotionForm = ({ promotion, onSubmit }) => {
             title: '',
             startDate: null,
             endDate: null,
+            discountPercentage: 0,
             type: '',
             enabled: true,
         });
@@ -88,7 +91,22 @@ const PromotionForm = ({ promotion, onSubmit }) => {
                 ]}
                 required
             />
-
+            <NumberInput
+                label={
+                    formData.type === 'PERCENTAGE'
+                        ? 'Discount Percentage'
+                        : formData.type === 'FIXED'
+                            ? 'Discount Amount'
+                            : 'Discount Value'
+                }
+                min={0}
+                precision={2}
+                value={formData.discountPercentage}
+                onChange={(value) =>
+                    setFormData({ ...formData, discountPercentage: value ?? 0 })
+                }
+                required
+            />
             <Group position="right" mt="md">
                 <Button variant="light" color="gray" type="button" onClick={handleCancel}>
                     Cancel

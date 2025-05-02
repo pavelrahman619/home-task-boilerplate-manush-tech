@@ -114,3 +114,18 @@ Get all products
 
 GET http://localhost:4000/products
 
+
+Testing orders in Postman
+
+POST http://localhost:4000/api/v1/order
+
+Body(JSON)
+{
+  "customerName": "Alice",
+  "items": [
+    {
+      "productId": 1,
+      "quantity": 2
+    }
+  ]
+}
