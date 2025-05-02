@@ -49,6 +49,9 @@ export class PromotionService {
   async findAllEnabled() {
     return this.prisma.promotion.findMany({
       where: { enabled: true },
+      include: {
+        promotionSlabs: true,
+      },
     });
   }
 }

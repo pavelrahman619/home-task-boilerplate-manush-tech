@@ -75,11 +75,12 @@ const OrderCart = ({ items, setItems }) => {
         if (promotion.type === 'WEIGHTED') {
             const totalWeight = item.weight * item.quantity;
             console.log(`Total weight ${totalWeight}`);
-
+            console.log(promotion);
+            
             const applicableSlab = promotion.promotionSlabs?.find(
                 slab => totalWeight >= slab.minWeight && totalWeight <= slab.maxWeight
             );
-
+            
             if (applicableSlab) {
                 return applicableSlab.discount * item.quantity;
             }
