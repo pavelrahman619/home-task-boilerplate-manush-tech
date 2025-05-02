@@ -7,6 +7,11 @@ export const getPromotions = async () => {
   return response.data;
 };
 
+export const getEnabledPromotions = async () => {
+  const response = await axios.get(API.PROMOTION.LIST_ENABLED);
+  return response.data;
+};
+
 // Create a new promotion
 export const createPromotion = async (promotion) => {
   const response = await axios.post(API.PROMOTION.CREATE, promotion);

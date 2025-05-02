@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NumberInput, Select, Group, Button, Flex } from '@mantine/core';
 import { getEnabledProducts } from '../../services/productService';
-import { getPromotions } from '../../services/promotionService';
+import { getEnabledPromotions } from '../../services/promotionService';
 import { ActionIcon } from '@mantine/core';
 import { IconTrash } from '@tabler/icons-react';
 
@@ -11,7 +11,7 @@ const OrderCart = ({ items, setItems }) => {
 
     useEffect(() => {
         getEnabledProducts().then(data => setProducts(data || []));
-        getPromotions().then(data => setPromotions(data || [])); // Fetch promotions
+        getEnabledPromotions().then(data => setPromotions(data || []));
     }, []);
 
     const addItem = () => {

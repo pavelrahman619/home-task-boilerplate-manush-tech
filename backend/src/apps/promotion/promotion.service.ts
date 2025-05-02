@@ -45,4 +45,10 @@ export class PromotionService {
       data: { enabled: true },
     });
   }
+
+  async findAllEnabled() {
+    return this.prisma.promotion.findMany({
+      where: { enabled: true },
+    });
+  }
 }

@@ -58,6 +58,7 @@ const PromotionForm = ({ promotion, onSubmit }) => {
             type: '',
             enabled: true,
         });
+        setSavedPromotionId(null);
     };
 
     return (
@@ -90,6 +91,7 @@ const PromotionForm = ({ promotion, onSubmit }) => {
                     { value: 'WEIGHTED', label: 'Weighted' },
                 ]}
                 required
+                disabled={!!savedPromotionId}
             />
             <NumberInput
                 label={

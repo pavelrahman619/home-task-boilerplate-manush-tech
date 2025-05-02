@@ -32,4 +32,9 @@ export class PromotionController {
   enable(@Param('id') id: string) {
     return this.promotionService.enable(+id);
   }
+
+  @Get('enabled')
+  findAllEnabled() {
+    return this.promotionService.findAllEnabled();
+  }
 }

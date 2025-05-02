@@ -19,6 +19,7 @@ export const API = {
     UPDATE: (id) => `${BASE_URL}/api/v1/promotion/${id}`, // PUT
     ENABLE: (id) => `${BASE_URL}/api/v1/promotion/enable/${id}`, // PUT
     DISABLE: (id) => `${BASE_URL}/api/v1/promotion/disable/${id}`, // PUT
+    LIST_ENABLED: `${BASE_URL}/api/v1/promotion/enabled`, // GET
   },
   PROMOTION_SLAB: {
     CREATE: `${BASE_URL}/api/v1/promotion-slab`, // POST
