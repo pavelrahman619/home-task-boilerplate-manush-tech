@@ -3,6 +3,9 @@
 This documentation serves as the central guide for anyone working on this project.
 
 ---
+## Main Branches
+- *staging*
+- *feat-docker*
 
 ## 📦 Requirements: Things to Install
 
