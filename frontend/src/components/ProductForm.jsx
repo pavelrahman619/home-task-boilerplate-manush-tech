@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { createProduct, updateProduct } from '../services/productService';
 import { TextInput, Textarea, Button, Stack, Group, Box } from '@mantine/core';
+import { showInfo, showSuccess } from '../utils/notificationUtils';
 
 
 const ProductForm = ({ product, onSubmit, onCancel }) => {
@@ -42,6 +43,7 @@ const ProductForm = ({ product, onSubmit, onCancel }) => {
         }
 
         onSubmit();
+        showSuccess('Created', 'Success');
     };
 
     const handleCancel = () => {
@@ -50,6 +52,8 @@ const ProductForm = ({ product, onSubmit, onCancel }) => {
         setPrice('');
         setWeight('');
         onCancel?.();
+
+        showInfo('Order form has been reset.', 'Cancelled');
     };
 
     return (

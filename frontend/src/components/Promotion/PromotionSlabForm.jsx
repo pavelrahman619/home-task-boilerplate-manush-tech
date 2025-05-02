@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, TextInput, NumberInput, Group } from '@mantine/core';
 import axios from 'axios';
 import { API } from './../../api/endpoints';
+import { showSuccess, showError } from './../../utils/notificationUtils';
 
 const PromotionSlabForm = ({ promotionId, onSlabSubmit }) => {
   const [slabData, setSlabData] = useState({
@@ -27,8 +28,10 @@ const PromotionSlabForm = ({ promotionId, onSlabSubmit }) => {
         discount: parseFloat(discount),
       });
       onSlabSubmit();
+      showSuccess('Created', 'Success');
     } catch (error) {
       console.error(error);
+      showError('Error', 'Not Success');
     }
   };
 

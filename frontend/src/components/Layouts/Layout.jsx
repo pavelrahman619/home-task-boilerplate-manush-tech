@@ -1,4 +1,4 @@
-import { Container, Flex, Grid, Text, Stack, NavLink } from '@mantine/core';
+import { Flex, Grid, Text, Stack, NavLink } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../constants/AppUrls';
 import LogoutButton from '../Global/LogoutButton';
@@ -13,8 +13,8 @@ const Layout = ({ children }) => {
                     <NavLink color="blue.4" variant="subtle" active label="Home" component={Link} to={ROUTES.DASHBOARD} />
                     <NavLink color="blue.4" variant="subtle" active label="Products" component={Link} to={ROUTES.PRODUCT_MANAGEMENT} />
                     <NavLink color="blue.4" variant="subtle" active label="Promotions" component={Link} to={ROUTES.PROMOTION_MANAGEMENT} />
-                    <NavLink color="blue.4" variant="subtle" active label="Orders List" component={Link} to={ROUTES.ORDER_LIST} />
                     <NavLink color="blue.4" variant="subtle" active label="Orders Create" component={Link} to={ROUTES.ORDER_CREATE} />
+                    <NavLink color="blue.4" variant="subtle" active label="Orders List" component={Link} to={ROUTES.ORDER_LIST} />
                 </Stack>
             </div>
 

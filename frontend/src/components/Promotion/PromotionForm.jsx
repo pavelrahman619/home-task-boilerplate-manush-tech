@@ -4,6 +4,7 @@ import { DatePickerInput } from '@mantine/dates';
 import axios from 'axios';
 import { API } from './../../api/endpoints';
 import PromotionSlabForm from './PromotionSlabForm';
+import { showInfo, showSuccess } from './../../utils/notificationUtils';
 
 const PromotionForm = ({ promotion, onSubmit }) => {
     const [formData, setFormData] = useState({
@@ -42,6 +43,7 @@ const PromotionForm = ({ promotion, onSubmit }) => {
                 setSavedPromotionId(res.data.id); // Track new ID
             }
             onSubmit(); // Refresh or close modal
+            showSuccess('Created', 'Success');
         } catch (error) {
             console.error(error);
         } finally {
@@ -59,6 +61,7 @@ const PromotionForm = ({ promotion, onSubmit }) => {
             enabled: true,
         });
         setSavedPromotionId(null);
+        showInfo('Order form has been reset.', 'Cancelled');
     };
 
     return (
