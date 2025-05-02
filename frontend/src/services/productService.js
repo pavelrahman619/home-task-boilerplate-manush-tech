@@ -6,6 +6,11 @@ export const getProducts = async () => {
   return response.data;
 };
 
+export const getEnabledProducts = async () => {
+  const response = await axios.get(API.PRODUCT.LIST_ENABLED);
+  return response.data;
+};
+
 export const createProduct = async (product) => {
   const response = await axios.post(API.PRODUCT.CREATE, product);
   return response.data;

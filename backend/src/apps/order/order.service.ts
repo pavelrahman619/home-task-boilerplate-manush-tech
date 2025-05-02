@@ -4,7 +4,7 @@ import { CreateOrderDto } from "./dto/create-order.dto";
 
 @Injectable()
 export class OrderService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   private async getDiscount(productId: number, quantity: number): Promise<number> {
     const product = await this.prisma.product.findUnique({
@@ -27,9 +27,9 @@ export class OrderService {
     let totalDiscount = 0;
 
     for (const promotion of promotions) {
+      const totalWeight = product.weight * quantity;
       const matchingSlab = promotion.promotionSlabs.find(
-        (slab) =>
-          product.weight >= slab.minWeight && product.weight <= slab.maxWeight
+        (slab) => totalWeight >= slab.minWeight && totalWeight <= slab.maxWeight
       );
 
       if (matchingSlab) {
@@ -43,7 +43,9 @@ export class OrderService {
             totalDiscount += matchingSlab.discount * quantity;
             break;
           case 'WEIGHTED':
-            totalDiscount += matchingSlab.discount * product.weight * quantity;
+            if (matchingSlab) {
+              totalDiscount += matchingSlab.discount * quantity;
+            }
             break;
         }
       }

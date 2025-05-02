@@ -14,7 +14,7 @@ export class CreatePromotionDto {
   endDate: string;
 
   @IsEnum(PromotionType)
-  type: PromotionType;
+type: PromotionType;
 
   @IsNumber()
   discountPercentage: number;
