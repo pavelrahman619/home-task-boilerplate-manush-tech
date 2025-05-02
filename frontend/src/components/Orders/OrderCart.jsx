@@ -30,14 +30,12 @@ const OrderCart = ({ items, setItems }) => {
     };
 
     const updateItem = (index, key, value) => {
-        console.log('updateItem called with:', { index, key, value });
 
         const updatedItem = { ...items[index], [key]: value };
 
         if (key === 'productId') {
             const productId = Number(value);
             const product = products.find(p => p.id === productId);
-            console.log('Product selected:', product);
             if (product) {
                 updatedItem.productId = productId;
                 updatedItem.productName = product.name;
@@ -58,7 +56,6 @@ const OrderCart = ({ items, setItems }) => {
         updatedItems[index] = updatedItem;
 
         setItems(updatedItems);
-        console.log('Updated items:', updatedItems);
     };
 
     const calculateDiscount = (promotion, item) => {
@@ -74,13 +71,11 @@ const OrderCart = ({ items, setItems }) => {
 
         if (promotion.type === 'WEIGHTED') {
             const totalWeight = item.weight * item.quantity;
-            console.log(`Total weight ${totalWeight}`);
-            console.log(promotion);
-            
+
             const applicableSlab = promotion.promotionSlabs?.find(
                 slab => totalWeight >= slab.minWeight && totalWeight <= slab.maxWeight
             );
-            
+
             if (applicableSlab) {
                 return applicableSlab.discount * item.quantity;
             }
@@ -148,7 +143,7 @@ const OrderCart = ({ items, setItems }) => {
                         >
                             <IconTrash size={16} />
                         </ActionIcon>
-                    </Flex> 
+                    </Flex>
                 </Group>
             ))}
             <Button mt="sm" onClick={addItem}>Add Item</Button>

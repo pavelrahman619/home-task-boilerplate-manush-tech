@@ -131,3 +131,12 @@ Body(JSON)
     }
   ]
 }
+
+
+
+Problems faced when running given boilerplate
+Prisma caused problems when trying to run with MySQL
+Postgresql couldnt authenticate properly in either docker or local computer
+Redis is directly related to both of them and wasn't able to work properly either
+Vite server Website is severely slow when reloading
+Vite server not working when VSCode is running
