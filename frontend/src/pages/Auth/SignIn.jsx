@@ -40,7 +40,9 @@ const SignIn = () => {
 
   const handleSubmit = async (values) => {
     try {
-      const response = await axios.post(API.AUTH.LOGIN, values); // adjust if needed
+      const response = await axios.post(API.AUTH.LOGIN, values, {
+        withCredentials: true,
+      }); // adjust if needed
       if (response.data?.status === 200) {
         dispatch(
           authActions.signin({
@@ -59,53 +61,53 @@ const SignIn = () => {
 
   return (
     <Box
-    style={{
-      background:
-        'linear-gradient(135deg, #74ebd5 0%, #acb6e5 100%)',
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-    }}
-  >
-    <Container size={420}>
-      <MotionBox
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <Center>
-          <Title align="center" order={2} fw={700} c="white">
-            Welcome Back 👋
-          </Title>
-        </Center>
-        <Text c="white" size="sm" align="center" mt="xs">
-          Enter your credentials to access the dashboard.
-        </Text>
+      style={{
+        background:
+          'linear-gradient(135deg, #74ebd5 0%, #acb6e5 100%)',
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+      }}
+    >
+      <Container size={420}>
+        <MotionBox
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <Center>
+            <Title align="center" order={2} fw={700} c="white">
+              Welcome Back 👋
+            </Title>
+          </Center>
+          <Text c="white" size="sm" align="center" mt="xs">
+            Enter your credentials to access the dashboard.
+          </Text>
 
-        <Paper withBorder shadow="md" p={30} mt={30} radius="md" bg="white">
-          <form onSubmit={form.onSubmit(handleSubmit)}>
-            <Stack>
-              <TextInput
-                label="Email or Username"
-                placeholder="you@manush.com"
-                {...form.getInputProps('identifier')}
-                radius="md"
-              />
-              <PasswordInput
-                label="Password"
-                placeholder="Your password"
-                {...form.getInputProps('password')}
-                radius="md"
-              />
-            </Stack>
-            <Button fullWidth mt="xl" type="submit" radius="md">
-              Sign In
-            </Button>
-          </form>
-        </Paper>
-      </MotionBox>
-    </Container>
-  </Box>
+          <Paper withBorder shadow="md" p={30} mt={30} radius="md" bg="white">
+            <form onSubmit={form.onSubmit(handleSubmit)}>
+              <Stack>
+                <TextInput
+                  label="Email or Username"
+                  placeholder="you@manush.com"
+                  {...form.getInputProps('identifier')}
+                  radius="md"
+                />
+                <PasswordInput
+                  label="Password"
+                  placeholder="Your password"
+                  {...form.getInputProps('password')}
+                  radius="md"
+                />
+              </Stack>
+              <Button fullWidth mt="xl" type="submit" radius="md">
+                Sign In
+              </Button>
+            </form>
+          </Paper>
+        </MotionBox>
+      </Container>
+    </Box>
   );
 };
 
